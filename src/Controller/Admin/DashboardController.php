@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\AlimentationJour;
 use App\Entity\Animal;
 use App\Entity\Avis;
 use App\Entity\Habitat;
@@ -56,5 +57,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Avis', 'fas fa-list', Avis::class);
         yield MenuItem::linkToCrud('Rapport Habitat', 'fas fa-list', RapportHabitat::class);
         yield MenuItem::linkToCrud('Rapport Animal', 'fas fa-list', RapportAnimal::class);
+        yield MenuItem::linkToCrud('Alimentation Jour', 'fas fa-list', AlimentationJour::class);
     }
 }

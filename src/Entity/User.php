@@ -42,11 +42,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Avis::class, mappedBy: 'user')]
     private Collection $avis;
 
+    #[ORM\OneToMany(targetEntity: AlimentationJour::class, mappedBy: 'user')]
+    private Collection $alimentationJours;
+
     public function __construct()
     {
         $this->rapportHabitats = new ArrayCollection();
         $this->rapportAnimals = new ArrayCollection();
         $this->avis = new ArrayCollection();
+        $this->alimentationJours = new ArrayCollection();
     }
     public function __toString(): string
     {
@@ -212,6 +216,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($avi->getUser() === $this) {
                 $avi->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, AlimentationJour>
+     */
+    public function getAlimentationJours(): Collection
+    {
+        return $this->alimentationJours;
+    }
+
+    public function addAlimentationJour(AlimentationJour $alimentationJour): static
+    {
+        if (!$this->alimentationJours->contains($alimentationJour)) {
+            $this->alimentationJours->add($alimentationJour);
+            $alimentationJour->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAlimentationJour(AlimentationJour $alimentationJour): static
+    {
+        if ($this->alimentationJours->removeElement($alimentationJour)) {
+            // set the owning side to null (unless already changed)
+            if ($alimentationJour->getUser() === $this) {
+                $alimentationJour->setUser(null);
             }
         }
 

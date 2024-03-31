@@ -3,10 +3,13 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Service;
+
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ServiceCrudController extends AbstractCrudController
 {
@@ -14,15 +17,14 @@ class ServiceCrudController extends AbstractCrudController
     {
         return Service::class;
     }
+    
+    
 
-    /*
+   
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+        yield from parent::configureFields($pageName);
+        yield TextareaField::new("imageFile")->setFormType(VichImageType::class)->hideOnindex();
     }
-    */
+   
 }
