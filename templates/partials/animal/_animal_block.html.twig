@@ -1,0 +1,13 @@
+  <div class="col-md-4 my-2 d-flex">
+	<div class="card w-100">
+		{% if animal.imageName %}
+			<img src="{{ vich_uploader_asset(animal, 'imageFile') }}" class="card-img-top img-fluid" alt="affiche {{ animal.nom }}"style="height: 280px;">
+		{% else %}
+			<img src="{{ asset('build/images/default-service.png') }}" class="card-img-top img-fluid" alt="affiche {{ animal.nom }}"style="height: 280px;">
+		{% endif %}
+		<div class="card-body">
+			<h5 class="card-title">{{ animal.nom }}</h5>
+			<a href="{{ path('app_animal_show', {'id': animal.id}) }}" class="btn btn-primary">Voir la fiche</a>
+		</div>
+	</div>
+</div>

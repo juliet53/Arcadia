@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ animal.nom }}{% endblock %}
+
+{% block body %}
+
+<div class="row flex-lg-row-reverse  g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-5">
+        <img src="{{ vich_uploader_asset(animal, 'imageFile') }}" class="d-block mx-lg-auto img-fluid rounded " alt="{{ animal.nom }}" width="700" height="500" loading="lazy">
+      </div>
+      <div class="col-lg-7">
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">{{ animal.nom }}</h1>
+        <p class="lead">{{ animal.description }} </p>
+        
+      </div>
+    </div>
+
+
+
+
+{% endblock %}

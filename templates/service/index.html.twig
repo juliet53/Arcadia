@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ServiceController!{% endblock %}
+
+{% block body %}
+
+<div class="row text-center">
+{% for service in services %}
+  {% include "partials/service/_service_block.html.twig" %}
+{% endfor %}
+</div>
+
+
+
+
+{% endblock %}

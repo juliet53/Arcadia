@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos amis {% endblock %}
+
+
+{% block body %}
+<h1 class="mb-4">Les animaux du zoo</h1>
+<div class="row text-center">
+{% for animal in animals %}
+  {% include "partials/animal/_animal_block.html.twig" %}
+{% endfor %}
+</div>
+{% endblock %}

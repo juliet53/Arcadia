@@ -1,0 +1,13 @@
+  <div class="col-md-4 my-2 d-flex">
+	<div class="card w-100">
+		{% if service.imageName %}
+			<img src="{{ vich_uploader_asset(service, 'imageFile') }}" class="card-img-top img-fluid" alt="affiche {{ service.nom }}"style="height: 280px;">
+		{% else %}
+			<img src="{{ asset('build/images/default-service.png') }}" class="card-img-top img-fluid" alt="affiche {{ service.name }}"style="height: 280px;">
+		{% endif %}
+		<div class="card-body">
+			<h5 class="card-title">{{ service.nom }}</h5>
+			<a href="{{ path('app_service_show', {'id': service.id}) }}" class="btn btn-primary">Voir la fiche</a>
+		</div>
+	</div>
+</div>
