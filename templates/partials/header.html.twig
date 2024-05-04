@@ -1,15 +1,35 @@
-<div class="container">
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-      <img src="{{asset('build/images/logo (1).png')}}" alt="Logo Arcadia" width="150 height="auto">
-       </a>
 
-      <ul class="nav nav-pills">
-        <li class="nav-item"><a href="{{ path('app_home') }}" class="nav-link active" aria-current="page">Accueil</a></li>
-        <li class="nav-item"><a href="{{ path('app_service') }}" class="nav-link">Nos Services</a></li>
-        <li class="nav-item"><a href="{{ path('app_habitat') }}" class="nav-link">Nos habitats</a></li>
-        <li class="nav-item"><a href="{{ path('app_animal') }}" class="nav-link">Les animaux</a></li>
-        <li class="nav-item"><a href="{{ path('app_login') }}" class="nav-link">Connection</a></li>
-      </ul>
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center justify-content-md-between py-3 mb-4 border-bottom align-items-center">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <img src="{{asset('build/images/logo (1).png')}}" alt="Logo Arcadia" width="150" height="auto" class="mx-auto">
+        </a>
+
+        <ul class="nav nav-pills col-12 col-md-auto">
+            <li class="nav-item"><a href="{{ path('app_home') }}" class="nav-link  " aria-current="page">Accueil</a></li>
+            <li class="nav-item"><a href="{{ path('app_service') }}" class="nav-link">Nos Services</a></li>
+            <li class="nav-item"><a href="{{ path('app_habitat') }}" class="nav-link">Nos habitats</a></li>
+            <li class="nav-item"><a href="{{ path('app_animal') }}" class="nav-link">Les animaux</a></li>
+            <li class="nav-item"><a href="{{ path('app_contact') }}" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="{{ path('app_login') }}" class="nav-link">Connexion</a></li>
+            <li class="nav-item"><a href="{{ path('app_logout') }}" class="nav-link">Deconnexion</a></li>
+        </ul>
     </header>
 </div>
+
+
+<script>
+const navLinks = document.querySelectorAll('.nav-link');
+
+const currentPath = window.location.pathname; // Get the current URL path
+
+navLinks.forEach(link => {
+  // Remove any existing 'active' class from links
+  link.classList.remove('active');
+
+  // Check if the link's href attribute matches the current path
+  if (link.href.endsWith(currentPath)) {
+    link.classList.add('active');
+  }
+});
+</script>

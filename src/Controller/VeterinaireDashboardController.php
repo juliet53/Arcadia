@@ -26,6 +26,7 @@ class VeterinaireDashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
+        yield MenuItem::linkToRoute('Accueil', 'fas fa-home', 'app_home');
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Rapport Habitat', 'fas fa-list', RapportHabitat::class);
         yield MenuItem::linkToCrud('Rapport Animal', 'fas fa-list', RapportAnimal::class);

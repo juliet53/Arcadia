@@ -1,0 +1,20 @@
+{% if rapport is not null %}
+    <div class="col-lg-4 col-sm-10">
+        <h2>Rapport Vétérinaire</h2>
+        <div class="card mb-4 mt-5" style="height: 400px;">
+            <div class="card-body">
+                <p class="card-text"> Etat de santé : {{ rapport.etat }}</p>
+                <hr class="my-3"> <!-- Ligne de séparation -->
+                <p class="card-text">Nourriture suggérée : {{ rapport.nourriturepropose }}</p>
+                <hr class="my-3">
+                <p class="card-text">Grammage : {{ rapport.grammagenourriture }} kg/jour </p>
+                <hr class="my-3">
+                <p class="card-text"> Dernier Passage : {{ rapport.datePassage|date('d/m/Y') }}</p>
+                {% if rapport.detailEtatAnimal is not empty %}
+                    <hr class="my-3">
+                    <p class="card-text"> Détail supplémentaire : {{ rapport.detailEtatAnimal }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endif %}

@@ -4,10 +4,20 @@
 
 
 {% block body %}
+<link rel="stylesheet" href="{{ asset('css/accueil.css') }}">
+<link rel="stylesheet" href="{{ asset('css/animal.css') }}">
 <h1 class="mb-4">Les animaux du zoo</h1>
-<div class="row text-center">
-{% for animal in animals %}
-  {% include "partials/animal/_animal_block.html.twig" %}
-{% endfor %}
+      
+
+<div id="animal-list" class="row text-center">
+    {% for animal in animals %}
+        {% include "partials/animal/_animal_block.html.twig" %}
+    {% endfor %}
 </div>
+
+
 {% endblock %}
+{%  block javascripts %} 
+      <script  src= "{{ asset('JS/filters.js') }}" ></script>  
+{%  endblock %}
+

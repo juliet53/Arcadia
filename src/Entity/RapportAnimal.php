@@ -31,7 +31,7 @@ class RapportAnimal
 
     #[ORM\ManyToOne(inversedBy: 'rapportAnimals')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Animal $Animal = null;
+    private ?Animal $animal = null;
 
     #[ORM\ManyToOne(inversedBy: 'rapportAnimals')]
     #[ORM\JoinColumn(nullable: false)]
@@ -104,12 +104,12 @@ class RapportAnimal
 
     public function getAnimal(): ?Animal
     {
-        return $this->Animal;
+        return $this->animal;
     }
 
-    public function setAnimal(?Animal $Animal): static
+    public function setAnimal(?Animal $animal): static
     {
-        $this->Animal = $Animal;
+        $this->animal = $animal;
 
         return $this;
     }

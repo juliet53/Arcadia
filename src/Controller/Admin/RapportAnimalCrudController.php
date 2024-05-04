@@ -23,7 +23,7 @@ class RapportAnimalCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield AssociationField::new("user");
-        yield AssociationField::new("Animal");
+        yield AssociationField::new("animal");
         yield DateTimeField::new("datePassage");
         yield TextareaField::new("etat");
         yield TextField::new("nourriturePropose");

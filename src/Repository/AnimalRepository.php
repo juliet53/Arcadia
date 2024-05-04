@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\Animal;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+
+use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -20,7 +22,15 @@ class AnimalRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Animal::class);
     }
-
+    public function findByHabitats(array $habitats): array
+    {
+        // Crée une requête pour récupérer les animaux en fonction des habitats sélectionnés
+        return $this->createQueryBuilder('a')
+            ->join('a.habitats', 'h', Join::WITH, 'h.id IN (:habitats)')
+            ->setParameter('habitats', $habitats)
+            ->getQuery()
+            ->getResult();
+    }
     //    /**
     //     * @return Animal[] Returns an array of Animal objects
     //     */

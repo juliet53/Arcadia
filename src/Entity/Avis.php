@@ -21,10 +21,10 @@ class Avis
     private ?string $commentaire = null;
 
     #[ORM\Column]
-    private ?bool $valide = null;
+    private ?bool $valide = false;
 
     #[ORM\ManyToOne(inversedBy: 'avis')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'avis')]

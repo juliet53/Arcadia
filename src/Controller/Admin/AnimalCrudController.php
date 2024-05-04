@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Animal;
+use App\Document\visitAnimal;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -25,6 +26,8 @@ class AnimalCrudController extends AbstractCrudController
        yield from parent::configureFields(($pageName)); 
         yield AssociationField::new("habitat");
         yield TextareaField::new("imageFile")->setFormType(VichImageType::class)->hideOnindex();
+        
     }
+    
     
 }
