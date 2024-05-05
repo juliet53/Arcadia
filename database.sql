@@ -1,23 +1,11 @@
-CREATE DATABASE IF NOT EXISTS `arcadia2024` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `arcadia2024`;
 
 
 
 
---  table `alimentation_jour`
 
 
-CREATE TABLE `alimentation_jour` (
-  `id` int(11) NOT NULL,
-  `nourrituredonne` varchar(255) NOT NULL,
-  `date` date NOT NULL,
-  `quantite` varchar(255) NOT NULL,
-  `animal_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
---  données de la table `alimentation_jour`
 
 
 INSERT INTO `alimentation_jour` (`id`, `nourrituredonne`, `date`, `quantite`, `animal_id`, `user_id`) VALUES
@@ -27,23 +15,9 @@ INSERT INTO `alimentation_jour` (`id`, `nourrituredonne`, `date`, `quantite`, `a
 
 
 
---  table `animal`
 
 
-CREATE TABLE `animal` (
-  `id` int(11) NOT NULL,
-  `nom` varchar(255) NOT NULL,
-  `race` varchar(255) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `habitat_id` int(11) NOT NULL,
-  `description` longtext NOT NULL,
-  `image_name` varchar(255) DEFAULT NULL,
-  `image_size` int(11) DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL COMMENT '(DC2Type:datetime_immutable)'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-
--- données de la table `animal`
 
 
 INSERT INTO `animal` (`id`, `nom`, `race`, `image`, `habitat_id`, `description`, `image_name`, `image_size`, `updated_at`) VALUES
@@ -67,20 +41,12 @@ INSERT INTO `animal` (`id`, `nom`, `race`, `image`, `habitat_id`, `description`,
 
 
 
---  la table `avis`
 
 
-CREATE TABLE `avis` (
-  `id` int(11) NOT NULL,
-  `nom` varchar(255) NOT NULL,
-  `commentaire` longtext NOT NULL,
-  `valide` tinyint(1) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `animal_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
---  données de la table `avis`
+
+
 
 
 INSERT INTO `avis` (`id`, `nom`, `commentaire`, `valide`, `user_id`, `animal_id`) VALUES
@@ -98,21 +64,11 @@ INSERT INTO `avis` (`id`, `nom`, `commentaire`, `valide`, `user_id`, `animal_id`
 
 
 
---  la table `habitat`
 
 
-CREATE TABLE `habitat` (
-  `id` int(11) NOT NULL,
-  `nom` varchar(255) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `description` longtext NOT NULL,
-  `image_name` varchar(255) DEFAULT NULL,
-  `image_size` int(11) DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL COMMENT '(DC2Type:datetime_immutable)'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
---  données de la table `habitat`
+
 
 
 INSERT INTO `habitat` (`id`, `nom`, `image`, `description`, `image_name`, `image_size`, `updated_at`) VALUES
@@ -123,35 +79,7 @@ INSERT INTO `habitat` (`id`, `nom`, `image`, `description`, `image_name`, `image
 
 
 
---  table `habitat_animal`
 
-
-CREATE TABLE `habitat_animal` (
-  `habitat_id` int(11) NOT NULL,
-  `animal_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
-
-
-
-
--- la table `rapport_animal`
-
-
-CREATE TABLE `rapport_animal` (
-  `id` int(11) NOT NULL,
-  `etat` longtext NOT NULL,
-  `nourriturepropose` varchar(255) NOT NULL,
-  `grammage_nourriture` varchar(255) NOT NULL,
-  `date_passage` date NOT NULL,
-  `detail_etat_animal` longtext DEFAULT NULL,
-  `animal_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
---  données de la table `rapport_animal`
 
 
 INSERT INTO `rapport_animal` (`id`, `etat`, `nourriturepropose`, `grammage_nourriture`, `date_passage`, `detail_etat_animal`, `animal_id`, `user_id`) VALUES
@@ -162,19 +90,12 @@ INSERT INTO `rapport_animal` (`id`, `etat`, `nourriturepropose`, `grammage_nourr
 
 
 
--- la table `rapport_habitat`
 
 
-CREATE TABLE `rapport_habitat` (
-  `id` int(11) NOT NULL,
-  `etat` varchar(255) NOT NULL,
-  `date` date NOT NULL,
-  `habitat_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
---  données de la table `rapport_habitat`
+
+
 
 
 INSERT INTO `rapport_habitat` (`id`, `etat`, `date`, `habitat_id`, `user_id`) VALUES
@@ -185,21 +106,10 @@ INSERT INTO `rapport_habitat` (`id`, `etat`, `date`, `habitat_id`, `user_id`) VA
 
 
 
---  la table `service`
 
 
-CREATE TABLE `service` (
-  `id` int(11) NOT NULL,
-  `nom` varchar(255) NOT NULL,
-  `description` longtext NOT NULL,
-  `photo` varchar(255) NOT NULL,
-  `image_name` varchar(255) DEFAULT NULL,
-  `image_size` int(11) DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL COMMENT '(DC2Type:datetime_immutable)'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
--- données de la table `service`
 
 
 INSERT INTO `service` (`id`, `nom`, `description`, `photo`, `image_name`, `image_size`, `updated_at`) VALUES
@@ -210,18 +120,11 @@ INSERT INTO `service` (`id`, `nom`, `description`, `photo`, `image_name`, `image
 
 
 
---  la table `user`
 
 
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
-  `email` varchar(180) NOT NULL,
-  `roles` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`roles`)),
-  `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
---  données de la table `user`
+
 
 
 INSERT INTO `user` (`id`, `email`, `roles`, `password`) VALUES
@@ -231,174 +134,6 @@ INSERT INTO `user` (`id`, `email`, `roles`, `password`) VALUES
 
 
 
---
--- Index pour la table `alimentation_jour`
---
-ALTER TABLE `alimentation_jour`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UNIQ_623E23898E962C16` (`animal_id`),
-  ADD KEY `IDX_623E2389A76ED395` (`user_id`);
-
---
--- Index pour la table `animal`
---
-ALTER TABLE `animal`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `IDX_6AAB231FAFFE2D26` (`habitat_id`);
-
---
--- Index pour la table `avis`
---
-ALTER TABLE `avis`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `IDX_8F91ABF0A76ED395` (`user_id`),
-  ADD KEY `IDX_8F91ABF08E962C16` (`animal_id`);
-
---
--- Index pour la table `habitat`
---
-ALTER TABLE `habitat`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `habitat_animal`
---
-ALTER TABLE `habitat_animal`
-  ADD PRIMARY KEY (`habitat_id`,`animal_id`),
-  ADD KEY `IDX_C0FE85A4AFFE2D26` (`habitat_id`),
-  ADD KEY `IDX_C0FE85A48E962C16` (`animal_id`);
 
 
 
---
--- Index pour la table `rapport_animal`
---
-ALTER TABLE `rapport_animal`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `IDX_BE0EED58E962C16` (`animal_id`),
-  ADD KEY `IDX_BE0EED5A76ED395` (`user_id`);
-
---
--- Index pour la table `rapport_habitat`
---
-ALTER TABLE `rapport_habitat`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `IDX_40E7D28BAFFE2D26` (`habitat_id`),
-  ADD KEY `IDX_40E7D28BA76ED395` (`user_id`);
-
---
--- Index pour la table `service`
---
-ALTER TABLE `service`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UNIQ_IDENTIFIER_EMAIL` (`email`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `alimentation_jour`
---
-ALTER TABLE `alimentation_jour`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT pour la table `animal`
---
-ALTER TABLE `animal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
-
---
--- AUTO_INCREMENT pour la table `avis`
---
-ALTER TABLE `avis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT pour la table `habitat`
---
-ALTER TABLE `habitat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT pour la table `messenger_messages`
---
-ALTER TABLE `messenger_messages`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT pour la table `rapport_animal`
---
-ALTER TABLE `rapport_animal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT pour la table `rapport_habitat`
---
-ALTER TABLE `rapport_habitat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT pour la table `service`
---
-ALTER TABLE `service`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT pour la table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- Contraintes pour les tables déchargées
---
-
---
--- Contraintes pour la table `alimentation_jour`
---
-ALTER TABLE `alimentation_jour`
-  ADD CONSTRAINT `FK_623E23898E962C16` FOREIGN KEY (`animal_id`) REFERENCES `animal` (`id`),
-  ADD CONSTRAINT `FK_623E2389A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
-
---
--- Contraintes pour la table `animal`
---
-ALTER TABLE `animal`
-  ADD CONSTRAINT `FK_6AAB231FAFFE2D26` FOREIGN KEY (`habitat_id`) REFERENCES `habitat` (`id`);
-
---
--- Contraintes pour la table `avis`
---
-ALTER TABLE `avis`
-  ADD CONSTRAINT `FK_8F91ABF08E962C16` FOREIGN KEY (`animal_id`) REFERENCES `animal` (`id`),
-  ADD CONSTRAINT `FK_8F91ABF0A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
-
---
--- Contraintes pour la table `habitat_animal`
---
-ALTER TABLE `habitat_animal`
-  ADD CONSTRAINT `FK_C0FE85A48E962C16` FOREIGN KEY (`animal_id`) REFERENCES `animal` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_C0FE85A4AFFE2D26` FOREIGN KEY (`habitat_id`) REFERENCES `habitat` (`id`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `rapport_animal`
---
-ALTER TABLE `rapport_animal`
-  ADD CONSTRAINT `FK_BE0EED58E962C16` FOREIGN KEY (`animal_id`) REFERENCES `animal` (`id`),
-  ADD CONSTRAINT `FK_BE0EED5A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
-
---
--- Contraintes pour la table `rapport_habitat`
---
-ALTER TABLE `rapport_habitat`
-  ADD CONSTRAINT `FK_40E7D28BA76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `FK_40E7D28BAFFE2D26` FOREIGN KEY (`habitat_id`) REFERENCES `habitat` (`id`);
-COMMIT;
