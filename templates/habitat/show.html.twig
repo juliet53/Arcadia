@@ -38,8 +38,9 @@
 </div>
 
 <div class="row  mt-5">
-    {{ include ('partials/Rapporthabitat/_rapporthabitat.html.twig')}}
-    
+    {% if rapport is not null %}
+        {{ include ('partials/Rapporthabitat/_rapporthabitat.html.twig')}}
+    {% endif %}
 </div>
 
 
