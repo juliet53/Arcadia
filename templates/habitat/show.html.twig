@@ -39,7 +39,17 @@
 
 <div class="row  mt-5">
     {% if rapport is not null %}
-        {{ include ('partials/Rapporthabitat/_rapporthabitat.html.twig')}}
+       <div class="col-lg-4 col-sm-10">
+        <h2>Rapport Vétérinaire</h2>
+        <div class="card mb-4  mt-5" style="height: 400px;">
+            <div class="card-body">
+                <p class="card-text"> Etat de l'habitat : {{ rapport.etat }}</p>
+                <hr class="my-3"> <!-- Ligne de séparation -->
+                <p class="card-text"> Dernier Passage : {{ rapport.date|date('d/m/Y') }}</p>
+            </div>
+        </div>
+    </div>
+
     {% endif %}
 </div>
 
