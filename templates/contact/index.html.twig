@@ -46,7 +46,6 @@
 
     // Récupérer le formulaire
     const form = event.target;
-
     // Envoyer les données du formulaire via AJAX
     try {
       const response = await fetch(form.action, {
@@ -67,12 +66,12 @@
         alert('Une erreur est survenue lors de l\'envoi du formulaire.');
       }
     } catch (error) {
+      
       // Afficher un message d'erreur en cas d'échec de la requête
       console.error('Erreur:', error);
       alert('Une erreur est survenue lors de l\'envoi du formulaire.');
     }
   }
-
   // Fonction pour vider les champs de saisie du formulaire
   function resetFormInputs(form) {
     // Réinitialiser les valeurs des champs du formulaire

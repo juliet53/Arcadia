@@ -32,13 +32,12 @@ class AnimalController extends AbstractController
         $habitats = $habitatRepository->findAll();
 
 
-
-
         return $this->render('animal/index.html.twig', [
             'animals' => $animals,
             'habitats' => $habitats,
         ]);
     }
+    
     #[Route('/animal/{id}', name: 'app_animal_show')]
     public function show(Animal $animal, Request $request, EntityManagerInterface $entityManager, AvisRepository $avisRepository, AlimentationJourRepository $alimentationJour, RapportAnimalRepository $rapportAnimal, DocumentManager $documentManager, Security $security): Response
     {
@@ -57,8 +56,6 @@ class AnimalController extends AbstractController
         // Enregistrez les modifications dans la base de données MongoDB
         $documentManager->persist($visitAnimal);
         $documentManager->flush();
-
-
 
         $alimentation = $alimentationJour->findOneBy(['animal' => $animal], ['id' => 'DESC']);
         $rapport = $rapportAnimal->findOneBy(['animal' => $animal], ['id' => 'DESC']);

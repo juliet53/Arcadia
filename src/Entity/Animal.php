@@ -65,7 +65,7 @@ class Animal
 
     #[ORM\ManyToOne(inversedBy: 'animals')]
     #[ORM\JoinColumn(nullable: false)]
-    // Remove the duplicate declaration of the $habitat property
+   
 
 
 
